@@ -16,4 +16,4 @@ class AdminUserAdmin(UserAdmin):
     list_display = ('get_full_name', 'get_full_name_kana', 'email', 'sex', 'birthday', 'postal_code', 'prefecture', 'address', 'building', 'tel', 'is_staff',)
     search_fields = ('username', 'email',)
     ordering = ('date_joined',)
-    filter_horizontal = ('groups', 'user_permissions')
+    filter_horizontal = ('groups', 'user_permissions',)
