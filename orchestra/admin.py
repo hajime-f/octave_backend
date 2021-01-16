@@ -1,21 +1,14 @@
 from .models import Orchestra
 from django.contrib import admin
-# from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
-# @admin.register(Orchestra)
-# class AdminUserAdmin(UserAdmin):
+class OrchestraAdmin(admin.ModelAdmin):
 
-#     fieldsets = (
-#         (None, {'fields': ('username', 'password')}),
-#         (_('Personal info'), {'fields': ('last_name', 'first_name', 'last_name_kana', 'first_name_kana', 'old_last_name', 'old_last_name_kana', 'email', 'sex', 'birthday', 'postal_code', 'prefecture', 'address', 'building', 'tel', 'url', 'photo')}),
-#         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
-#                                        'groups', 'user_permissions')}),
-#         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-#     )
-#     list_display = ('get_full_name', 'get_full_name_kana', 'email', 'sex', 'birthday', 'postal_code', 'prefecture', 'address', 'building', 'tel', 'is_staff',)
-#     search_fields = ('username', 'email',)
-#     ordering = ('date_joined',)
-#     filter_horizontal = ('groups', 'user_permissions')
+    fieldsets = (
+        (_('Orchestra info'), {'fields': ('orchestra_name', 'email', 'orchestra_type', 'birthday', 'postal_code', 'prefecture', 'address', 'building', 'tel', 'url', 'photo')}),
+    )
+    list_display = ('get_full_name', 'email', 'orchestra_type', 'prefecture', 'address', 'date_joined',)
+    search_fields = ('orchestra_name', 'orchestra_name_kana', 'orchestra_type', 'email', 'prefecture', 'address',)
+    ordering = ('date_joined',)
 
-admin.site.register(Orchestra)
-
+admin.site.register(Orchestra, OrchestraAdmin)

@@ -57,7 +57,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name_kana = models.CharField(_('名（かな）'), max_length=150)
     old_last_name = models.CharField(_('旧姓'), max_length=150, blank=True, null=True)
     old_last_name_kana = models.CharField(_('旧姓（かな）'), max_length=150, blank=True, null=True)
-    email = models.EmailField(_('メールアドレス'), unique=True, blank=False, null=False)
+    email = models.EmailField(_('メールアドレス'), unique=True)
 
     sex = models.CharField(_('性別'), max_length=4, choices=(('男性','男性'), ('女性','女性')))
     birthday = models.DateField(_('生年月日'), blank=True, null=True)

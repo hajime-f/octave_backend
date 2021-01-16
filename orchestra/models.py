@@ -1,4 +1,5 @@
 import uuid
+from datetime import datetime
 from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
@@ -12,7 +13,7 @@ class Orchestra(models.Model):
     
     orchestra_name = models.CharField(_('楽団名'), max_length=150)
     orchestra_name_kana = models.CharField(_('楽団名（かな）'), max_length=150)
-    email = models.EmailField(_('メールアドレス'), unique=True)
+    email = models.EmailField(_('代表メールアドレス'), unique=True)
 
     orchestra_type = models.CharField(_('種別'), max_length=20,
                                       choices=(('吹奏楽団','吹奏楽団'),
@@ -31,7 +32,9 @@ class Orchestra(models.Model):
     tel = models.CharField(_('電話番号（ハイフンなし）'), max_length=11, blank=True, null=True)
     
     url = models.URLField(_('URL'), max_length=300, blank=True, null=True)
-    photo = models.ImageField(_('写真'), blank=True, null=True)    
+    photo = models.ImageField(_('写真'), blank=True, null=True)
+    
+    date_joined = models.DateTimeField(default=datetime.now, editable=False)
 
     class Meta:
         db_table = 'Orchestra'
