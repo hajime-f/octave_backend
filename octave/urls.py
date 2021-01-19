@@ -8,9 +8,9 @@ schema_view = get_schema_view(title='octave API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dj-rest-auth/', include('dj_rest_auth.urls')),
-    path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
-    path('dj-rest-auth/account-confirm-email/', VerifyEmailView.as_view(), name='account_email_verification_sent'),
+    path('apiv1/auth/', include('dj_rest_auth.urls')),
+    path('apiv1/auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('apiv1/auth/account-confirm-email/', VerifyEmailView.as_view(), name='account_email_verification_sent'),
     path('schema/', schema_view),
     path('docs/', include_docs_urls(title='octave API')),
 ]
