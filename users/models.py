@@ -72,6 +72,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     url = models.URLField(_('URL'), max_length=300, blank=True, null=True)
     photo = models.ImageField(_('写真'), blank=True, null=True)
 
+    is_create_orchestra = models.BooleanField(default=False, editable=False)
+
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
