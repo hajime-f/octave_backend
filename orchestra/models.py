@@ -4,15 +4,14 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
+from users.models import User
+
 class Orchestra(models.Model):
 
     uuid = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
-    
-    admin_users = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='管理者',
-                                    related_name='orchestra', on_delete=models.PROTECT)
 
-#    members = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='メンバー',
-#                                related_name='members', on_delete=models.PROTECT)
+    members = models.ManyToManyField(User, blank=True, related_name="members")
+    admin_users = models.ManyToManyField(User, related_name="managers")
     
     orchestra_name = models.CharField(_('楽団名'), max_length=150)
     orchestra_name_kana = models.CharField(_('楽団名（かな）'), max_length=150)
