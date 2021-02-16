@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     #My applications
     'users',
     'orchestra',
+    'practice_info',
 ]
 
 REST_FRAMEWORK = {

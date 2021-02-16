@@ -1,4 +1,4 @@
-from .models import Orchestra
+from .models import PracticeInfo
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 

@@ -36,7 +36,8 @@ class Orchestra(models.Model):
     url = models.URLField(_('URL'), max_length=300, blank=True, null=True)
     photo = models.ImageField(_('写真'), blank=True, null=True)
     
-    date_joined = models.DateTimeField(default=datetime.now, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
 
     class Meta:
         db_table = 'Orchestra'

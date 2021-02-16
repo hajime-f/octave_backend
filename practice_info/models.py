@@ -13,7 +13,10 @@ class PracticeInfo(models.Model):
     
     title = models.CharField(_('タイトル'), max_length=300)
     content = models.CharField(_('内容'), max_length=3000)
-    orchestra = ForeignKey(Orchestra, on_delete=models.CASCADE)
+    orchestra = models.ForeignKey(Orchestra, on_delete=models.CASCADE)
+
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(auto_now=True, editable=False)
     
     class Meta:
         db_table = 'PracticeInfo'

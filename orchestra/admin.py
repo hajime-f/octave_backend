@@ -7,8 +7,8 @@ class OrchestraAdmin(admin.ModelAdmin):
     fieldsets = (
         (_('Orchestra info'), {'fields': ('orchestra_name', 'email', 'admin_users', 'orchestra_type', 'birthday', 'postal_code', 'prefecture', 'address', 'building', 'tel', 'url', 'photo')}),
     )
-    list_display = ('get_full_name', 'email', 'orchestra_type', 'prefecture', 'address', 'date_joined',)
+    list_display = ('get_full_name', 'email', 'orchestra_type', 'prefecture', 'address', 'created_at',)
     search_fields = ('orchestra_name', 'orchestra_name_kana', 'orchestra_type', 'email', 'prefecture', 'address',)
-    ordering = ('date_joined',)
+    ordering = ('created_at',)
 
 admin.site.register(Orchestra, OrchestraAdmin)
