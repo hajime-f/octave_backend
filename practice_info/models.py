@@ -15,8 +15,9 @@ class PracticeInfo(models.Model):
     content = models.CharField(_('内容'), max_length=3000)
     orchestra = models.ForeignKey(Orchestra, on_delete=models.CASCADE)
 
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    updated_at = models.DateTimeField(auto_now=True, editable=False)
+    created_at = models.DateTimeField(_('作成日時'), auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(_('更新日時'), auto_now=True, editable=False)
+    is_active = models.BooleanField(_('有効/無効'), default=True)
     
     class Meta:
         db_table = 'PracticeInfo'

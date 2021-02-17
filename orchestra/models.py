@@ -35,9 +35,10 @@ class Orchestra(models.Model):
     
     url = models.URLField(_('URL'), max_length=300, blank=True, null=True)
     photo = models.ImageField(_('写真'), blank=True, null=True)
-    
-    created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    updated_at = models.DateTimeField(auto_now=True, editable=False)
+
+    created_at = models.DateTimeField(_('作成日時'), auto_now_add=True, editable=False)
+    updated_at = models.DateTimeField(_('更新日時'), auto_now=True, editable=False)
+    is_active = models.BooleanField(_('有効/無効'), default=True)
 
     class Meta:
         db_table = 'Orchestra'
