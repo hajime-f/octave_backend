@@ -57,16 +57,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name_kana = models.CharField(_('名（かな）'), max_length=150)
     old_last_name = models.CharField(_('旧姓'), max_length=150, blank=True, null=True)
     old_last_name_kana = models.CharField(_('旧姓（かな）'), max_length=150, blank=True, null=True)
+    nickname = models.CharField(_('ニックネーム'), max_length=150, blank=True, null=True)
     email = models.EmailField(_('メールアドレス'), unique=True)
 
-    sex = models.CharField(_('性別'), max_length=4, choices=(('男性','男性'), ('女性','女性')))
+    sex = models.CharField(_('性別'), max_length=4, choices=(('1','男性'), ('2','女性')))
     birthday = models.DateField(_('生年月日'), blank=True, null=True)
 
     country = models.CharField(_('国'), default='日本', max_length=15, editable=False)
-    postal_code = models.CharField(_('郵便番号（ハイフンなし）'), max_length=7, blank=True, null=True)
-    prefecture = models.CharField(_('都道府県'), max_length=5, blank=True, null=True)
-    address = models.CharField(_('市区町村番地'), max_length=50, blank=True, null=True)
-    building = models.CharField(_('建物名'), max_length=30, blank=True, null=True)
+    postal_code = models.CharField(_('郵便番号（ハイフンなし）'), max_length=7)
+    prefecture = models.CharField(_('都道府県'), max_length=5)
+    address = models.CharField(_('市区町村番地'), max_length=100)
+    building = models.CharField(_('建物名'), max_length=30)
     tel = models.CharField(_('電話番号（ハイフンなし）'), max_length=11, blank=True, null=True)
     
     url = models.URLField(_('URL'), max_length=300, blank=True, null=True)
