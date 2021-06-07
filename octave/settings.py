@@ -126,6 +126,9 @@ DATABASES = {
         'PASSWORD': env('PASSWORD'),
         'PORT': env('PORT'),
         'HOST': env('HOST'),
+        'OPTIONS': {
+            'charset': 'utf8mb4',
+        },
     }
 }
 
