@@ -92,7 +92,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     # updated_at = models.DateTimeField(_('更新日時'), auto_now=True, editable=False)
     created_at = models.DateTimeField(_('作成日時'), default=timezone.now)
     updated_at = models.DateTimeField(_('更新日時'), default=timezone.now)
-    is_active = models.BooleanField(_('有効/無効'), default=True)
+    # is_active = models.BooleanField(_('有効/無効'), default=True)
 
     objects = UserManager()
 
