@@ -17,13 +17,27 @@ class Orchestra(models.Model):
     orchestra_name_kana = models.CharField(_('楽団名（かな）'), max_length=150)
     email = models.EmailField(_('代表メールアドレス'), unique=True)
 
-    orchestra_type = models.CharField(_('種別'), max_length=20,
-                                      choices=(('吹奏楽団','吹奏楽団'),
-                                               ('交響楽団','交響楽団'),
-                                               ('合唱団','合唱団'),
-                                               ('ブラスバンド','ブラスバンド'),
-                                               ('アンサンブル','アンサンブル'),
-                                               ('その他','その他')))
+    orchestra_choices1 = [
+        ('10', '吹奏楽団'),
+        ('20', '交響楽団'),
+        ('30', '合唱団'),
+        ('40', '合唱団'),
+        ('50', 'ブラスバンド'),
+        ('60', 'アンサンブル'),
+        ('70', 'その他'),
+    ]
+    orchestra_type1 = models.CharField(_('楽団種別'), max_length=20, choices=orchestra_choices1, default='10')
+    
+    orchestra_choices2 = [
+        ('10', '小学校'),
+        ('20', '中学校'),
+        ('30', '高等学校'),
+        ('40', '大学'),
+        ('50', '一般楽団'),
+        ('60', 'その他'),
+    ]
+    orchestra_type2 = models.CharField(_('組織種別'), max_length=20, choices=orchestra_choices2, default='50')
+    
     birthday = models.DateField(_('設立年月日'), blank=True, null=True)
     
     country = models.CharField(_('国'), default='日本', max_length=15, editable=False)
@@ -38,7 +52,16 @@ class Orchestra(models.Model):
 
     created_at = models.DateTimeField(_('作成日時'), auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(_('更新日時'), auto_now=True, editable=False)
-    is_active = models.BooleanField(_('有効/無効'), default=True)
+    is_active = models.BooleanField(_('有効/無効'), default=True, editable=False)
+    is_super = models.BooleanField(_('特殊楽団'), default=False, editable=False)
+
+    plan_choices = [
+        ('10', '無料プラン'),
+        ('20', 'エントリープラン'),
+        ('30', 'スタンダードプラン'),
+        ('40', 'プレミアムプラン'),
+    ]
+    plan = models.CharField(_('プラン'), max_length=150, choices=plan_choices, default='10')
 
     class Meta:
         db_table = 'Orchestra'
